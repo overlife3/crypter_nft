@@ -1,5 +1,4 @@
 import { Box, SxProps, Theme, useTheme } from "@mui/material";
-import React from "react";
 import { gray } from "../theme/theme-primitives";
 import { Close } from "@mui/icons-material";
 
