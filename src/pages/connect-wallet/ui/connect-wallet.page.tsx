@@ -10,6 +10,7 @@ import { Box, Container, Divider, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import anyMethodImgUrl from "../assets/any-method.jpg";
+import { ConnectByQrCode } from "@/features/connect-by-coinbase-wallet";
 
 export const ConnectWalletPage = () => {
   const navigate = useNavigate();
@@ -19,7 +20,12 @@ export const ConnectWalletPage = () => {
   return (
     <Container
       sx={{
-        pt: "80px",
+        pt: {
+          xs: "30px",
+          sm: "60px",
+          md: "80px",
+        },
+        mb: "136px",
       }}
     >
       <Box
@@ -45,12 +51,28 @@ export const ConnectWalletPage = () => {
         <Typography
           component="h1"
           variant="h2"
-          sx={{ fontWeight: 600, fontSize: "48px" }}
+          sx={{
+            fontWeight: 600,
+            fontSize: {
+              md: "48px",
+              sm: "32px",
+              xs: " 24px",
+            },
+            lineHeight: "1em",
+          }}
         >
           Connect your wallet
         </Typography>
       </Box>
-      <Divider sx={{ mb: "80px" }} />
+      <Divider
+        sx={{
+          mb: {
+            xs: "30px",
+            sm: "60px",
+            md: "80px",
+          },
+        }}
+      />
 
       <Box
         sx={{
@@ -67,6 +89,10 @@ export const ConnectWalletPage = () => {
           sx={{
             maxWidth: "544px",
             width: "100%",
+            mb: {
+              xs: "30px",
+              sm: 0,
+            },
           }}
         >
           <ConnectWalletMethod
@@ -74,21 +100,7 @@ export const ConnectWalletPage = () => {
             onClick={() => setIsSelected((prev) => !prev)}
           />
         </Box>
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: "448px",
-            borderRadius: "26px",
-            overflow: "hidden",
-            mx: "auto",
-          }}
-        >
-          <img
-            style={{ width: "100%", height: "100%" }}
-            src={anyMethodImgUrl}
-            alt="any method"
-          />
-        </Box>
+        {isSelected ? <ConnectByQrCode /> : <AnyMethodImageBlock />}
       </Box>
     </Container>
   );
@@ -107,9 +119,15 @@ const ConnectWalletMethod = ({
       sx={{
         display: "flex",
         alignItems: "center",
-        gap: "32px",
+        gap: {
+          xs: "20px",
+          sm: "32px",
+        },
         cursor: "pointer",
-        p: "32px",
+        p: {
+          xs: "16px",
+          sm: "32px",
+        },
         border: selected
           ? `2px solid ${selectByTheme(gray[400], gray[700])}`
           : "none",
@@ -132,12 +150,12 @@ const ConnectWalletMethod = ({
           width: {
             md: "64px",
             sm: "32px",
-            xs: "64px",
+            xs: "44px",
           },
           height: {
             md: "64px",
             sm: "32px",
-            xs: "64px",
+            xs: "44px",
           },
           borderRadius: "50%",
           border: selected ? `2px solid ${brand[400]}` : "none",
@@ -147,7 +165,7 @@ const ConnectWalletMethod = ({
           <Check
             sx={{
               fontSize: {
-                xs: "40px",
+                xs: "30px",
                 sm: "24px",
                 md: "40px",
               },
@@ -157,7 +175,7 @@ const ConnectWalletMethod = ({
           <AccountBalanceWalletOutlined
             sx={{
               fontSize: {
-                xs: "40px",
+                xs: "30px",
                 sm: "24px",
                 md: "40px",
               },
@@ -181,7 +199,7 @@ const ConnectWalletMethod = ({
             fontSize: {
               md: " 24px",
               sm: "16px",
-              xs: "24px",
+              xs: "20px",
             },
           }}
         >
@@ -190,6 +208,28 @@ const ConnectWalletMethod = ({
 
         {selected && <ArrowRightAlt fontSize="large" />}
       </Box>
+    </Box>
+  );
+};
+
+const AnyMethodImageBlock = () => {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: "448px",
+        borderRadius: "26px",
+        overflow: "hidden",
+        mx: {
+          sx: "auto",
+        },
+      }}
+    >
+      <img
+        style={{ width: "100%", height: "100%" }}
+        src={anyMethodImgUrl}
+        alt="any method"
+      />
     </Box>
   );
 };
