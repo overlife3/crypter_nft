@@ -2,10 +2,15 @@ import { Card } from "@/entities/token/ui/card";
 import img from "@/shared/assets/card.jpg";
 import avatar from "@/shared/assets/user-1.png";
 import { UiWidgetSwiper } from "@/shared/ui/ui-widget-swiper";
+import { Box, SxProps, Theme } from "@mui/material";
 
-export const Swiper = () => {
+type Props = {
+  sx?: SxProps<Theme>;
+};
+
+export const HotBidWidget = ({ sx }: Props) => {
   return (
-    <div>
+    <Box sx={{ ...sx }}>
       <UiWidgetSwiper title="Hot bid" slideWidth="256px">
         <Card
           tokenData={{
@@ -142,6 +147,6 @@ export const Swiper = () => {
           }}
         />
       </UiWidgetSwiper>
-    </div>
+    </Box>
   );
 };

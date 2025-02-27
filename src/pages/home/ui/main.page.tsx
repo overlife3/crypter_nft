@@ -3,7 +3,7 @@ import { gray, typography } from "@/shared/theme/theme-primitives";
 import { CreatorNetwork } from "./creator-network";
 import { Box, Button, Container, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Swiper } from "@/widgets/hot-bid";
+import { HotBidWidget } from "@/widgets/hot-bid";
 import { PopularUsersWidget } from "@/widgets/popular-users-swiper";
 import { HotCollectionWidget } from "@/widgets/hot-collections";
 import { SloganInvitation } from "./slogan-invitation";
@@ -70,7 +70,7 @@ export const MainPage = () => {
           py: "126px",
         }}
       >
-        <Swiper />
+        <HotBidWidget />
       </Container>
       <Box
         sx={{

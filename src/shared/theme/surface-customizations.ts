@@ -7,6 +7,8 @@ export const surfaceCustomizations: Components<Theme> = {
       root: () => ({
         padding: 0,
         backgroundColor: "transparent",
+        backgroundImage: "none",
+
         boxShadow: "none",
         ":before": {
           backgroundColor: "transparent",
@@ -28,13 +30,21 @@ export const surfaceCustomizations: Components<Theme> = {
   MuiAccordionSummary: {
     styleOverrides: {
       root: ({ theme }) => ({
-        borderBottom: `${gray[400]} 1px solid`,
+        borderBottom: `1px solid`,
+        borderColor: gray[400],
         padding: 0,
         paddingBottom: "24px",
-        "&:hover": { backgroundColor: gray[50] },
-        "&:focus-visible": { backgroundColor: "transparent" },
+        transition: "border-color .2s",
+
+        "&.Mui-expanded": {
+          borderColor: "transparent",
+          // paddingBottom: 0,
+        },
+        "&:focus-visible": {
+          backgroundColor: "transparent",
+        },
         ...theme.applyStyles("dark", {
-          "&:hover": { backgroundColor: gray[800] },
+          borderColor: gray[700],
         }),
         [`& .${typographyClasses.root}`]: {
           fontSize: "1.14rem",
@@ -45,12 +55,17 @@ export const surfaceCustomizations: Components<Theme> = {
   },
   MuiAccordionDetails: {
     styleOverrides: {
-      root: () => ({
+      root: ({ theme }) => ({
         fontFamily: "Poppins",
         padding: 0,
-        paddingTop: "24px",
+        paddingBottom: "24px",
         fontSize: "1rem",
         color: gray[600],
+        borderBottom: `1px solid`,
+        borderColor: gray[400],
+        ...theme.applyStyles("dark", {
+          borderColor: gray[700],
+        }),
       }),
     },
   },
